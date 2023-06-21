@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://api-maps.yandex.ru/3.0/?apikey=5f0723e2-f12c-465b-aff4-76f6380c11d3&lang=ru_RU"></script>
+    <title>Погода</title>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="container">
+            <div class="header">
+                <div class="switches">
+                    <div class="button-switching" onclick="rerlaceImgBackground()">
+                        <div class="icon-refresh"><img src="img/icon/refresh/refresh-logo.svg" alt="#"></div>
+                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_53_5)">
+                                <path
+                                    d="M39 0H5C2.23858 0 0 2.23858 0 5V39C0 41.7614 2.23858 44 5 44H39C41.7614 44 44 41.7614 44 39V5C44 2.23858 41.7614 0 39 0Z"
+                                    fill="#B4B8BB" fill-opacity="0.4" />
+                                <path d="M27.2218 44L7.2218 24L0 31.2218V39C0 41.7614 2.23858 44 5 44H27.2218Z"
+                                    fill="#AEB5B9" fill-opacity="0.5" />
+                                <path
+                                    d="M34.2218 14L44 23.7782V39C44 41.7614 41.7614 44 39 44H27.2218L15.7218 32.5L34.2218 14Z"
+                                    fill="#AEB5B9" fill-opacity="0.3" />
+                                <path
+                                    d="M9 13C11.2091 13 13 11.2091 13 9C13 6.79086 11.2091 5 9 5C6.79086 5 5 6.79086 5 9C5 11.2091 6.79086 13 9 13Z"
+                                    fill="white" fill-opacity="0.3" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_53_5">
+                                    <rect width="44" height="44" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="switch-language">
+                        <form action="" method="post" name="drop_down_box">
+                            <select name="menu" size="1" class="select-menu">
+                                <option value="en">EN</option>
+                                <option value="ru">RU</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="degree-change">
+                        <div class="type-measurement">
+                            <div class="degrees measurement-change">
+                                <span>°С</span>
+                            </div>
+                            <div class="fahrenheit measurement-change">
+                                <span>°F</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-city">
+                    <div class="form-search-city">
+                        <form id="search">
+                            <input id="valueInput" type="text" placeholder="Search city or ZIP">
+                            <input id="btn" type="submit" value="SEARCH">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="all-weather-information">
+                <div class="info-city-weather">
+                    <div class="title">
+                        <div class="city-name">
+                            <p></p>
+                        </div>
+                        <div class="day-information">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="today-weather-info">
+                        <div class="temperature-data-today">
+                            <div class="temperature-today">
+                                <p class="data-num-temp"></p>
+                                <span class="degree-sign">°</span>
+                            </div>
+                            <div class="weather-icon">
+                                <div class="icon">
+                                    <img src="img/icon/icon weather/oblachno.png" alt="#">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-weather-information">
+                            <div class="items-information-weather">
+                                <div class="info-weather">
+                                    <p class="cloudiness"></p>
+                                </div>
+                                <div class="info-weather">
+                                    <p class="freelslike"></p>
+                                </div>
+                                <div class="info-weather">
+                                    <p class="wind"></p>
+                                </div>
+                                <div class="info-weather">
+                                    <p class="humdity"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-weather-next-day">
+                        <div class="items-info-weather">
+                            <div class="items">
+                                <div class="title-info-day">
+                                    <p></p>
+                                </div>
+                                <div class="items-temp">
+                                    <div class="data-temp-day">
+                                        <p></p>
+                                    </div>
+                                    <div class="icon-weather">
+                                        <img src="img/icon/icon weather/oblachno-mini.png" alt="#">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="items">
+                                <div class="title-info-day">
+                                    <p></p>
+                                </div>
+                                <div class="items-temp">
+                                    <div class="data-temp-day">
+                                        <p></p>
+                                    </div>
+                                    <div class="icon-weather">
+                                        <img src="img/icon/icon weather/peremnaia.png" alt="#">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="items">
+                                <div class="title-info-day">
+                                    <p></p>
+                                </div>
+                                <div class="items-temp">
+                                    <div class="data-temp-day">
+                                        <p></p>
+                                    </div>
+                                    <div class="icon-weather">
+                                        <img src="img/icon/icon weather/oblachno-mini.png" alt="#">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-data">
+                    <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d300731.86194415804!2d27.175770602664556!3d53.92343479278839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z0LPRg9Cz0Lsg0LrQsNGA0YLRiw!5e0!3m2!1sru!2sby!4v1686594133750!5m2!1sru!2sby"
+                            width="375" height="400" style="border:0;border-radius:5%" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="info-geolocation">
+                        <div class="lat">
+                            <p></p>
+                        </div>
+                        <div class="lon">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- <div id="container"> -->
+    <!-- <div class="place_information">
+            <div class="icon">
+                <span class="material-symbols-outlined">
+                    location_on
+                </span>
+            </div>
+            <div class="selected_city">
+                <p>
+                    Минск, Беларусь
+                </p>
+            </div>
+        </div>
+        <div class="time_data">
+            <div class="day_month ft">
+                <p>25</p>
+            </div>
+            <div class="all_data ft">
+                <div class="month">
+                    <p>апреля</p>
+                </div>
+                <div class="day_week ft">
+                    <p>суббота</p>
+                </div>
+                <div class="time ft">
+                    <p>14:19</p>
+                </div>
+            </div>
+        </div>
+        <div class="weather_data">
+            <div class="temperature">
+                <p>19"</p>
+            </div>
+            <div class="weather_datasheet">
+                <div class="description_weather">
+                    <p></p>
+                </div>
+                <div class="other_weather_data">
+                    <div class="temp_max_min">
+                        <p>
+
+                        </p>
+                        <p>
+
+                        </p>
+                        <p>
+
+                        </p>
+                    </div>
+                    <div class="other_data">
+                        <p class="data_weather"></p>
+                        <p class="data_weather"></p>
+                        <p class="data_weather"></p>
+                        <p class="data_weather"></p>
+                        <p class="data_weather"></p>
+                        <p class="data_weather"></p>
+                        <p class="data_weather"></p>
+                        <p class="data_weather"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
+
+    <!-- <div id="root">
+        <div class="popup">
+            <div class="input">
+                <form id="formStart">
+                    <input type="text" id="input-tetx">
+                    <input type="submit" value="ok" id="btn">
+                </form>
+            </div>
+        </div>
+    </div>
+ -->
+
+    <script src="index.js"></script>
+</body>
+
+</html>
